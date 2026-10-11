@@ -47,4 +47,4 @@ All configurations are tested against current stable releases on Linux (Ubuntu /
 ## 📜 License
 All scripts and templates in this repository are open source and provided under the [MIT License](LICENSE).
 
-Published by **[Nabil Massaoudi](https://www.repobenchmarks.com/p/about.html)** at [RepoBenchmarks](https://www.repobenchmarks.com).
+Published by **[Nabil Massaoudi](https://www.repobenchmarks.com/p/about_01361173445.html)** at [RepoBenchmarks](https://www.repobenchmarks.com).
