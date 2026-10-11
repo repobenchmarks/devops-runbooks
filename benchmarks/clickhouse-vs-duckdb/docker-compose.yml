@@ -1,0 +1,32 @@
+version: '3.8'
+
+services:
+  clickhouse:
+    image: clickhouse/clickhouse-server:24.8-alpine
+    container_name: clickhouse-benchmark
+    ports:
+      - "8123:8123"
+      - "9000:9000"
+    environment:
+      - CLICKHOUSE_DB=benchmark_db
+      - CLICKHOUSE_USER=default
+      - CLICKHOUSE_DEFAULT_ACCESS_MANAGEMENT=1
+    volumes:
+      - ch_data:/var/lib/clickhouse
+    ulimits:
+      nofile:
+        soft: 262144
+        hard: 262144
+
+  duckdb-runner:
+    image: python:3.12-slim
+    container_name: duckdb-runner
+    depends_on:
+      - clickhouse
+    volumes:
+      - .:/workspace
+    working_dir: /workspace
+    command: tail -f /dev/null
+
+volumes:
+  ch_data:
