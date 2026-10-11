@@ -1,0 +1,43 @@
+model_list:
+  - model_name: codellama-prod
+    litellm_params:
+      model: openai/Qwen/Qwen2.5-Coder-32B-Instruct
+      api_base: http://vllm-primary-gpu:8000/v1
+      api_key: none
+      rpm: 120
+      tpm: 100000
+
+  - model_name: codellama-prod
+    litellm_params:
+      model: anthropic/claude-3-5-sonnet-20241022
+      api_key: os.environ/ANTHROPIC_API_KEY
+
+  - model_name: fast-chat
+    litellm_params:
+      model: openai/meta-llama/Llama-3.1-8B-Instruct
+      api_base: http://vllm-primary-gpu:8000/v1
+      api_key: none
+
+  - model_name: fast-chat
+    litellm_params:
+      model: openai/gpt-4o-mini
+      api_key: os.environ/OPENAI_API_KEY
+
+router_settings:
+  routing_strategy: latency-based-routing
+  fallbacks:
+    - {"codellama-prod": ["anthropic/claude-3-5-sonnet-20241022"]}
+    - {"fast-chat": ["openai/gpt-4o-mini"]}
+  allowed_fails: 2
+  cooldown_time: 30
+  retry_after_error_codes: [429, 500, 502, 503, 504]
+
+litellm_settings:
+  cache: true
+  cache_type: redis
+  redis_host: litellm-redis
+  redis_port: 6379
+  redis_password: os.environ/REDIS_PASSWORD
+  default_cache_ttl: 3600
+  telemetry: false
+  drop_params: true
