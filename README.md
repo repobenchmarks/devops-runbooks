@@ -2,7 +2,7 @@
 
 [![Website](https://img.shields.io/badge/Website-repobenchmarks.com-blue)](https://www.repobenchmarks.com)
 [![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
-[![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-brightgreen.svg)](https://github.com/repobenchmarks/devops-runbooks)
+[![Maintained](https://img.shields.io/badge/Maintained%3F-yes-brightgreen.svg)](https://github.com/repobenchmarks/devops-runbooks)
 
 This repository contains verified, production-ready configuration templates, `docker-compose.yml` stacks, and database scripts published on **[RepoBenchmarks](https://www.repobenchmarks.com)** by **Nabil Massaoudi**.
 
@@ -35,12 +35,14 @@ All configurations are tested against current stable releases on Linux (Ubuntu /
 
 | Directory | Stack Components | Associated Article Guide |
 | :--- | :--- | :--- |
-| `docker/ollama-gpu/` | Ollama, NVIDIA Container Toolkit, Nginx | [Deploying Ollama with Docker Compose](https://www.repobenchmarks.com/2026/10/deploying-ollama-with-docker-compose.html) |
-| `docker/vllm-inference/` | vLLM, PagedAttention, OpenAI API | [vLLM vs. Ollama Production Architecture](https://www.repobenchmarks.com/2026/10/vllm-vs-ollama-production-serving.html) |
-| `databases/postgres-pgbouncer/`| Postgres 16, PgBouncer, Transaction Pooling | [How to Fix PostgreSQL too many clients](https://www.repobenchmarks.com/2026/10/how-to-fix-postgresql-sorry-too-many.html) |
-| `databases/pgvector/` | PostgreSQL, pgvector 0.7+, HNSW | [pgvector vs. Pinecone vs. Chroma](https://www.repobenchmarks.com/2026/10/pgvector-vs-pinecone-vs-chroma.html) |
 | `docker/uptime-kuma/` | Uptime Kuma, Nginx, Caddy | [Self-Hosting Uptime Kuma Guide](https://www.repobenchmarks.com/2026/10/self-hosting-uptime-kuma-complete.html) |
-| `docker/nginx-reverse-proxy/`| Nginx, Docker 127.0.0.11 DNS | [How to Fix Nginx 502 Bad Gateway](https://www.repobenchmarks.com/2026/10/how-to-fix-nginx-502-bad-gateway-with.html) |
+| `databases/sqlite-concurrency/` | Python 3.12, SQLite WAL mode | [Fixing sqlite3 database is locked](https://www.repobenchmarks.com/2026/10/how-to-fix-sqlite3operationalerror.html) |
+| `docker/ollama-gpu/` | Ollama, NVIDIA Container Toolkit, Nginx | [Local LLM Inference Stacks](https://www.repobenchmarks.com) |
+| `databases/postgres-pgbouncer/`| Postgres 16, PgBouncer, Transaction Pooling | [PostgreSQL Performance Guides](https://www.repobenchmarks.com) |
+| `databases/pgvector/` | PostgreSQL, pgvector 0.7+, HNSW | [Vector Search Architecture](https://www.repobenchmarks.com) |
+| `cli-configs/fzf/` | fzf, fd, bat, git workflows | [CLI Productivity Guides](https://www.repobenchmarks.com) |
+
+👉 *Explore all engineering guides, runbooks, and benchmarks at **[repobenchmarks.com](https://www.repobenchmarks.com)***.
 
 ---
 
