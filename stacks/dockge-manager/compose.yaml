@@ -1,0 +1,20 @@
+version: '3.8'
+
+services:
+  dockge:
+    image: louislam/dockge:1
+    container_name: dockge
+    restart: unless-stopped
+    ports:
+      - "5001:5001"
+    environment:
+      - DOCKGE_STACKS_DIR=/opt/stacks
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - ./data:/app/data
+      - /opt/stacks:/opt/stacks
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:5001"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
