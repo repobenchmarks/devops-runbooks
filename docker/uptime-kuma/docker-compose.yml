@@ -1,0 +1,23 @@
+# Production Uptime Kuma Stack with Isolated Bridge Network
+# Ref: https://www.repobenchmarks.com/2026/10/self-hosting-uptime-kuma-complete.html
+services:
+  uptime-kuma:
+    image: louislam/uptime-kuma:1.23.16-debian
+    container_name: uptime-kuma
+    restart: always
+    volumes:
+      - kuma_data:/app/data
+    ports:
+      - "127.0.0.1:3001:3001"
+    healthcheck:
+      test: ["CMD-SHELL", "node extra/healthcheck.js"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+    security_opt:
+      - no-new-privileges:true
+
+volumes:
+  kuma_data:
+    name: uptime_kuma_data
