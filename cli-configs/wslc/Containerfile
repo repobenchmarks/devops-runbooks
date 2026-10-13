@@ -1,0 +1,5 @@
+# WSL Containers GA Demonstration Containerfile
+# Ref: https://www.repobenchmarks.com/2026/10/wsl-containers-at-ga-what-wslc-can-do.html
+FROM nginx:1.29-alpine
+RUN echo '<h1>RepoBenchmarks: Tested on WSL Containers GA</h1>' > /usr/share/nginx/html/index.html
+EXPOSE 80
