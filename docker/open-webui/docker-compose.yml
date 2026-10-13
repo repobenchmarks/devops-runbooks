@@ -1,0 +1,18 @@
+# Open WebUI Production Stack with Persistent Named Volume & Stable Secret Key
+# Ref: https://www.repobenchmarks.com
+services:
+  open-webui:
+    image: ghcr.io/open-webui/open-webui:main
+    ports:
+      - "3000:8080"
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    environment:
+      - WEBUI_SECRET_KEY=${WEBUI_SECRET_KEY}
+    volumes:
+      - open-webui:/app/backend/data
+    restart: unless-stopped
+
+volumes:
+  open-webui:
+    name: open-webui
