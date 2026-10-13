@@ -1,0 +1,15 @@
+# Cross-Platform Docker Container-to-Host Connectivity Stack
+# Ref: https://www.repobenchmarks.com/2026/10/docker-container-cannot-connect-to-host.html
+services:
+  app:
+    image: alpine:latest
+    container_name: host-probe
+    extra_hosts:
+      # Maps host.docker.internal to the docker0 bridge gateway on Linux
+      - "host.docker.internal:host-gateway"
+    command: >
+      sh -c "apk add --no-cache curl netcat-openbsd &&
+             echo '==> Testing DNS resolution...' &&
+             ping -c 1 host.docker.internal &&
+             echo '==> Testing host connectivity...' &&
+             nc -zv host.docker.internal 5432 || true"
